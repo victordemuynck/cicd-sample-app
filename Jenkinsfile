@@ -12,7 +12,7 @@ pipeline {
                 sh '''
                     docker stop samplerunning || true
                     docker rm samplerunning || true
-                    docker run -d --name samplerunning -p 8081:8080 sampleapp:latest
+                    docker run -d --name samplerunning -p 8081:5050 sampleapp:latest
                 '''
             }
         }
@@ -25,7 +25,7 @@ pipeline {
                         ssh -o StrictHostKeyChecking=no vagrant@192.0.2.10 "
                             docker stop samplerunning || true
                             docker rm samplerunning || true
-                            docker run -d --name samplerunning -p 8081:8080 sampleapp:latest
+                            docker run -d --name samplerunning -p 8081:5050 sampleapp:latest
                         "
                     '''
                 }
